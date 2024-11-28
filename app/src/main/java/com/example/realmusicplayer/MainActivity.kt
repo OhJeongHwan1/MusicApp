@@ -1,5 +1,6 @@
 package com.example.realmusicplayer
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +17,14 @@ class MainActivity : AppCompatActivity() {
 
         // 데이터 설정 및 어댑터 연결
         val songs = DataProvider.getSongs()
-        val adapter = SongAdapter(songs)
+        val adapter = SongAdapter(songs){ selectedSong ->
+            // Song 객체를 Intent로 전달
+            val intent = Intent(this, MusicPlayer::class.java).apply {
+                putExtra("SELECTED_SONG", selectedSong)
+            }
+            startActivity(intent)
+
+        }
         recyclerView.adapter = adapter
     }
 }

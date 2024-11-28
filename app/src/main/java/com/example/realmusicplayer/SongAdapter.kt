@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class SongAdapter(private val songs: List<Song>) : RecyclerView.Adapter<SongAdapter.SongViewHolder>() {
+class SongAdapter(private val songs: List<Song>,private val onItemClick: (Song) -> Unit) : RecyclerView.Adapter<SongAdapter.SongViewHolder>() {
 
     // ViewHolder 정의
     class SongViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -26,6 +26,10 @@ class SongAdapter(private val songs: List<Song>) : RecyclerView.Adapter<SongAdap
         holder.songImage.setImageResource(song.imageResId)
         holder.songTitle.text = song.title
         holder.songArtist.text = song.artist
+
+        holder.itemView.setOnClickListener {
+            onItemClick(song) // 클릭된 Song 전달
+        }
     }
 
     override fun getItemCount(): Int {

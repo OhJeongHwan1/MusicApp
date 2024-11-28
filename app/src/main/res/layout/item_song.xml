@@ -9,7 +9,10 @@
         android:id="@+id/song_image"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:scaleType="centerCrop" /> <!-- 임시 이미지 -->
+        android:scaleType="centerCrop"
+        android:background="@drawable/rounded_image2"
+        android:padding="4dp"
+        /> <!-- 임시 이미지 -->
 
     <LinearLayout
         android:layout_width="0dp"
